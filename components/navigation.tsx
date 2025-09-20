@@ -76,7 +76,7 @@ export function Navigation() {
                 </Button>
               </Link>
             ) : (
-              <Link href="/login">
+              <Link href="/login" className="hover:text-white">
                 <Button variant="outline" size="sm">
                   Get Started
                 </Button>
