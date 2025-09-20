@@ -7,7 +7,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AirQuality.AI - AI-Powered Air Quality Monitoring",
+  title: "Aasman - AI-Powered Air Quality Monitoring",
   description:
     "Advanced air quality estimation and mapping system using AI/ML, satellite data, and atmospheric models across India.",
   generator: "v0.app",
