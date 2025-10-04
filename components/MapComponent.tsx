@@ -288,7 +288,6 @@ export default function MapPage() {
             </div>
 
             {/* Map Area */}
-          // In your main component, replace the entire map section with:
 <div className="lg:col-span-2">
   <Card className="bg-card/50 backdrop-blur-sm border-border/50 h-[600px]">
     <CardHeader>
