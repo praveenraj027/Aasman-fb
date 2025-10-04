@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
+import AQIMap from "@/components/AQIMap"
 import {
   Search,
   MapPin,
@@ -286,67 +287,25 @@ export default function MapPage() {
             </div>
 
             {/* Map Area */}
-            <div className="lg:col-span-2">
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 h-[600px]">
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span className="flex items-center">
-                      <MapPin className="w-5 h-5 mr-2" />
-                      India AQI Map
-                    </span>
-                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                      Live Data
-                    </Badge>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="h-full">
-                  {/* Simulated Map with City Markers */}
-                  <div className="relative w-full h-full bg-gradient-to-br from-background to-secondary/20 rounded-lg overflow-hidden">
-                    {/* India outline simulation */}
-                    <div className="absolute inset-4 border-2 border-dashed border-muted-foreground/20 rounded-lg"></div>
-
-                    {/* City markers */}
-                    {filteredData.map((city) => (
-                      <button
-                        key={city.id}
-                        onClick={() => handleCityClick(city)}
-                        className={`absolute w-4 h-4 rounded-full ${getAQIColor(city.aqi)} border-2 border-background shadow-lg hover:scale-125 transition-transform cursor-pointer`}
-                        style={{
-                          left: `${((city.lng - 68) / (97 - 68)) * 80 + 10}%`,
-                          top: `${((37 - city.lat) / (37 - 8)) * 80 + 10}%`,
-                        }}
-                        title={`${city.city}: AQI ${city.aqi}`}
-                      >
-                        <span className="sr-only">{city.city}</span>
-                      </button>
-                    ))}
-
-                    {/* Legend */}
-                    <div className="absolute bottom-4 left-4 bg-card/80 backdrop-blur-sm rounded-lg p-3 border border-border/50">
-                      <p className="text-xs font-medium text-foreground mb-2">AQI Levels</p>
-                      <div className="space-y-1">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <span className="text-xs text-muted-foreground">Good (0-50)</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                          <span className="text-xs text-muted-foreground">Moderate (51-100)</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                          <span className="text-xs text-muted-foreground">Unhealthy for Sensitive (101-150)</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                          <span className="text-xs text-muted-foreground">Unhealthy (151-200)</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          // In your main component, replace the entire map section with:
+<div className="lg:col-span-2">
+  <Card className="bg-card/50 backdrop-blur-sm border-border/50 h-[600px]">
+    <CardHeader>
+      <CardTitle className="flex items-center justify-between">
+        <span className="flex items-center">
+          <MapPin className="w-5 h-5 mr-2" />
+          India AQI Map
+        </span>
+        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+          Live Data
+        </Badge>
+      </CardTitle>
+    </CardHeader>
+    <CardContent className="h-full p-0">
+      <AQIMap onCityClick={handleCityClick} selectedCity={selectedCity} />
+    </CardContent>
+  </Card>
+</div>
 
             {/* City Details Panel */}
             <div className="lg:col-span-1">
